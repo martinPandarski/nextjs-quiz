@@ -15,11 +15,18 @@
 
 .choice{
     background-color: rgba(0,0,0,-0.97);
+    width: 90%;
+    height: 90%;
     display: flex;
     align-items: stretch;
     cursor: pointer;
     margin: 15px;
     box-shadow: 10px 10px 15px lightgrey;
+    transform: none;
+}
+
+.choice:hover{
+    transform: scale(1.02) translateZ(0px);
 }
 
 .choice-label{
@@ -34,17 +41,6 @@
     justify-content: center;
     display: flex;
 }
-
-    /* .choice-button{
-        display: block;
-        margin: 52px 0px 0px 0px;
-        height: 60px;
-        width: 80%;
-        background-color: orange;
-        border: none;
-        -webkit-box-shadow: 1px 1px whitesmoke;
-        box-shadow: 1px 1px whitesmoke;
-    } */
 
 .choice-div{
     line-height: 1.125rem;
