@@ -20,14 +20,6 @@
     cursor: pointer;
     margin: 15px;
     box-shadow: 10px 10px 15px lightgrey;
-    
-    
-    /* padding: 0px 0px 0px 1px;
-    margin: 0;
-    float: left;
-    display: flex;
-    border: 1px solid white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .choice-label{
@@ -43,18 +35,20 @@
     display: flex;
 }
 
-.choice-button{
-    display: block;
-    margin: 52px 0px 0px 0px;
-    height: 60px;
-    width: 80%;
-    background-color: orange;
-    border: none;
-    -webkit-box-shadow: 1px 1px whitesmoke;
-    box-shadow: 1px 1px whitesmoke;
-}
+    /* .choice-button{
+        display: block;
+        margin: 52px 0px 0px 0px;
+        height: 60px;
+        width: 80%;
+        background-color: orange;
+        border: none;
+        -webkit-box-shadow: 1px 1px whitesmoke;
+        box-shadow: 1px 1px whitesmoke;
+    } */
 
 .choice-div{
     line-height: 1.125rem;
     padding: 20px 0;
+    width: 100%;
+    text-align: left;
 }
