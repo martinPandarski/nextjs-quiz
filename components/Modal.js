@@ -26,7 +26,7 @@ export default function Modal({score, allQuestions, setShowScore, setCurrQuestio
         setCurrQuestion(0)
     }
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence exitBeforeEnter >
       <motion.div
         className="backdrop"
         variants={backdrop}

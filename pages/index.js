@@ -1,4 +1,5 @@
 import Head from "next/head";
+import ProgressBar from "../components/Progressbar";
 import { MongoClient } from "mongodb";
 import { Fragment, useState } from "react";
 import styles from "../styles/Quiz.module.css";
@@ -9,9 +10,11 @@ function Quiz(props) {
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
   const [currQuestion, setCurrQuestion] = useState(0);
-  const [nextQuestion, setNextQuestion] = useState(false);
+  const [progress, setProgress] = useState(100);
+
 
   const answerButtonHandler = (isCorrect) => {
+    setProgress(100)
     if (isCorrect) {
       setScore(score + 1);
     }
@@ -31,12 +34,10 @@ function Quiz(props) {
         <AnimatePresence exitBeforeEnter>
       <div className={styles["quiz-wrapper"]}>
         {showScore ? (
-          <Modal score={score} allQuestions={props.questions.length} setShowScore={setShowScore} setCurrQuestion={setCurrQuestion}/>
-          // <div className={styles.score}>
-          //   You scored {score} out of {props.questions.length}
-          // </div>
+          <Modal  score={score} allQuestions={props.questions.length} setShowScore={setShowScore} setCurrQuestion={setCurrQuestion}/>
         ) : (
-            <motion.div exit={{ y: -1000, opacity: 0 }}>
+          <motion.div exit={{ y: -1000, opacity: 0 }}>
+              <ProgressBar setProgress={setProgress} progress={progress} setShowScore={setShowScore} questions={props.questions} currQuestion={currQuestion} setCurrQuestion={setCurrQuestion}/>
               {" "}
               <p className={styles["question-title"]}>
                 {props.questions[currQuestion].questionText}
