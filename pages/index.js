@@ -3,45 +3,7 @@ import { MongoClient } from "mongodb";
 import { Fragment, useState } from "react";
 import styles from "../styles/Quiz.module.css";
 import { motion, AnimatePresence } from "framer-motion";
-
-// const questions = [
-//   {
-//     questionText: "Which of these is the capital of France?",
-//     answerOptions: [
-//       { answerText: "New York", isCorrect: false, index: "A" },
-//       { answerText: "London", isCorrect: false, index: "B" },
-//       { answerText: "Paris", isCorrect: true, index: "C" },
-//       { answerText: "Dublin", isCorrect: false, index: "D" },
-//     ],
-//   },
-//   {
-//     questionText: "Who is CEO of Tesla?",
-//     answerOptions: [
-//       { answerText: "New York", isCorrect: false, index: "A" },
-//       { answerText: "London", isCorrect: false, index: "B" },
-//       { answerText: "Paris", isCorrect: true, index: "C" },
-//       { answerText: "Dublin", isCorrect: false, index: "D" },
-//     ],
-//   },
-//   {
-//     questionText: "The iPhone was created by which company?",
-//     answerOptions: [
-//       { answerText: "New York", isCorrect: false, index: "A" },
-//       { answerText: "London", isCorrect: false, index: "B" },
-//       { answerText: "Paris", isCorrect: true, index: "C" },
-//       { answerText: "Dublin", isCorrect: false, index: "D" },
-//     ],
-//   },
-//   {
-//     questionText: "How many Harry Potter books are there?",
-//     answerOptions: [
-//       { answerText: "New York", isCorrect: false, index: "A" },
-//       { answerText: "London", isCorrect: false, index: "B" },
-//       { answerText: "Paris", isCorrect: true, index: "C" },
-//       { answerText: "Dublin", isCorrect: false, index: "D" },
-//     ],
-//   },
-// ];
+import Modal from "../components/Modal";
 
 function Quiz(props) {
   const [showScore, setShowScore] = useState(false);
@@ -66,13 +28,14 @@ function Quiz(props) {
       <Head>
         <link rel="stylesheet" href="https://use.typekit.net/sly1ocm.css" />
       </Head>
+        <AnimatePresence exitBeforeEnter>
       <div className={styles["quiz-wrapper"]}>
         {showScore ? (
-          <div className={styles.score}>
-            You scored {score} out of {props.questions.length}
-          </div>
+          <Modal score={score} allQuestions={props.questions.length} setShowScore={setShowScore} setCurrQuestion={setCurrQuestion}/>
+          // <div className={styles.score}>
+          //   You scored {score} out of {props.questions.length}
+          // </div>
         ) : (
-          <AnimatePresence>
             <motion.div exit={{ y: -1000, opacity: 0 }}>
               {" "}
               <p className={styles["question-title"]}>
@@ -93,9 +56,9 @@ function Quiz(props) {
                 </div>
               ))}
             </motion.div>
-          </AnimatePresence>
         )}
       </div>
+        </AnimatePresence>
     </Fragment>
   );
 }
