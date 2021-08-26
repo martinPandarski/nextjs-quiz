@@ -14,10 +14,10 @@
     box-shadow: 10px 10px 15px lightgrey;
     transform: none;
 }
-
+/* 
 .choice:hover{
     transform: scale(1.02) translateZ(0px);
-}
+} */
 
 .choice-label{
     background-color: blue;

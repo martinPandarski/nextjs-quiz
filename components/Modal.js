@@ -50,7 +50,15 @@ export default function Modal({
             Out of {allQuestions} questions you scored {score} right!
           </p>
           {score < 2 ? <p>You can do better than that!</p> : <p>Well done!</p>}
-          <button onClick={tryAgainHandler}>Try again!</button>
+          <motion.button
+            whileHover={{
+              scale: 1.1,
+              boxShadow: "0px 0px 8px rgb(35, 36, 41)"
+            }}
+            onClick={tryAgainHandler}
+          >
+            Try again!
+          </motion.button>
         </motion.div>
       </motion.div>
     </AnimatePresence>

@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
 const useStyles = makeStyles({
   root: {
     width: "100%",
-    color: "#ff3300",
-  },
+    color: "#ff3300"
+  }
 });
 
 export default function ProgressBar(props) {

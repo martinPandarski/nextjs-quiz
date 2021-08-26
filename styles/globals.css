@@ -42,10 +42,13 @@ a {
 }
 
 .modal button{
+  background-color: white;
   color: #444;
   border-color: #443;
-  font-weight: bold;
+  font-weight: 800;
   margin-top: 20px;
+  border-radius: 10px;
+  padding: 3%;
 }
 .modal button:hover{
   cursor: pointer;
