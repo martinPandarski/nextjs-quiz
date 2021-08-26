@@ -36,7 +36,7 @@ function Quiz(props) {
       setTimeout(() => {
         setShowQuestion(true);
         setProgress(100);
-      }, 2000);
+      }, 1000);
     } else {
       setShowScore(true);
     }

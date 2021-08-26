@@ -20,8 +20,7 @@ export default function ProgressBar(props) {
 
           return 100;
         }
-        const diff = Math.random() * 10;
-        return Math.min(oldProgress - diff, 100);
+        return Math.min(oldProgress - 3, 100);
       });
     }, 500);
 
