@@ -10,4 +10,4 @@ The quiz has built in functionality to add more questions.
 * Run `npm install` to install all the dependencies
 * Run `npm run dev` to run the development server
 
-* The quiz is also deployed at - https://nextjs-quiz-bmn57cr6a-martinpandarski.vercel.app/
+* The quiz is also deployed at - https://nextjs-quiz-martinpandarski.vercel.app/
