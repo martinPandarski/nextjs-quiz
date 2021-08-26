@@ -4,28 +4,42 @@ import { Fragment, useState } from "react";
 import Modal from "../components/Modal";
 import QuizTable from "../components/QuizTable";
 
-
 function Quiz(props) {
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
   const [currQuestion, setCurrQuestion] = useState(0);
   const [showQuestion, setShowQuestion] = useState(true);
+  const [progress, setProgress] = useState(100);
 
+  const timeOutHandler = () => {
+    setShowQuestion(false);
+    const toggleNextQuestion = currQuestion + 1;
+    if (toggleNextQuestion < props.questions.length) {
+      setCurrQuestion(toggleNextQuestion);
+      setTimeout(() => {
+        setShowQuestion(true);
+        setProgress(100);
+      }, 2000);
+    } else {
+      setShowScore(true);
+    }
+  };
 
   const answerButtonHandler = (isCorrect) => {
-    setShowQuestion(false)
+    setShowQuestion(false);
     if (isCorrect) {
       setScore(score + 1);
     }
     const toggleNextQuestion = currQuestion + 1;
     if (toggleNextQuestion < props.questions.length) {
       setCurrQuestion(toggleNextQuestion);
+      setTimeout(() => {
+        setShowQuestion(true);
+        setProgress(100);
+      }, 2000);
     } else {
       setShowScore(true);
     }
-    setTimeout(() => {
-      setShowQuestion(true)   
-    }, 2000);
   };
 
   return (
@@ -33,17 +47,27 @@ function Quiz(props) {
       <Head>
         <link rel="stylesheet" href="https://use.typekit.net/sly1ocm.css" />
       </Head>
-          {showScore ? (
-            <Modal
-              score={score}
-              allQuestions={props.questions.length}
-              setShowScore={setShowScore}
-              setCurrQuestion={setCurrQuestion}
-              setScore={setScore}
-            />
-          ) : (
-            <QuizTable showQuestion={showQuestion} answerButtonHandler={answerButtonHandler} currQuestion={currQuestion} questions={props.questions}/>  
-          )}
+      {showScore ? (
+        <Modal
+          score={score}
+          allQuestions={props.questions.length}
+          setShowScore={setShowScore}
+          setCurrQuestion={setCurrQuestion}
+          setScore={setScore}
+          setShowQuestion={setShowQuestion}
+          setProgress={setProgress}
+        />
+      ) : (
+        <QuizTable
+          showQuestion={showQuestion}
+          answerButtonHandler={answerButtonHandler}
+          currQuestion={currQuestion}
+          questions={props.questions}
+          progress={progress}
+          setProgress={setProgress}
+          timeOutHandler={timeOutHandler}
+        />
+      )}
     </Fragment>
   );
 }
@@ -68,7 +92,7 @@ export async function getStaticProps() {
         answerOptions: question.answerOptions,
         id: question._id.toString(),
         isCode: question.isCode.toString(),
-        additionalText: question.additionalText || ''
+        additionalText: question.additionalText || "",
       })),
     },
     revalidate: 1,
