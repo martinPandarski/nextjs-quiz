@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from 'next/link'
 import { motion, AnimatePresence } from "framer-motion";
+import QuestionContext from "../store/QuestionContext";
 
 const backdrop = {
   visible: { opacity: 1 },
@@ -19,11 +20,12 @@ const modal = {
     }
 }
 
-export default function Modal({score, allQuestions, setShowScore, setCurrQuestion}) {
+export default function Modal({score, setScore, allQuestions, setShowScore, setCurrQuestion}) {
     const tryAgainHandler = (e) => {
         e.preventDefault();
-        setShowScore(false)
         setCurrQuestion(0)
+        setScore(0)
+        setShowScore(false)
     }
   return (
     <AnimatePresence exitBeforeEnter >
