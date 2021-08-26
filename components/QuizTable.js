@@ -1,9 +1,6 @@
-import SyntaxHighlighter from "react-syntax-highlighter";
-import vs from "react-syntax-highlighter/dist/cjs/styles/hljs/vs";
 import styles from "../styles/QuizTable.module.css";
 import { motion, AnimatePresence } from "framer-motion";
 import QuizQuestion from "./QuizQuestion";
-import { useEffect, useState } from "react";
 
 export default function QuizTable({
   answerButtonHandler,

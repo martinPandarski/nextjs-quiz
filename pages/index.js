@@ -1,8 +1,6 @@
 import Head from "next/head";
-import ProgressBar from "../components/Progressbar";
 import { MongoClient } from "mongodb";
 import { Fragment, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Modal from "../components/Modal";
 import QuizTable from "../components/QuizTable";
 

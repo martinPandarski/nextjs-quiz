@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
-import Link from 'next/link'
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import QuestionContext from "../store/QuestionContext";
+
 
 const backdrop = {
   visible: { opacity: 1 },
